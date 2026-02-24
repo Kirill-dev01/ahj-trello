@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0079bf;
+    margin: 0;
+    padding: 20px;
+}
+
+.board {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.column {
+    background-color: #ebecf0;
+    border-radius: 3px;
+    width: 272px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.column-header {
+    font-weight: bold;
+    padding: 5px 10px 10px 10px;
+}
+
+.cards-list {
+    min-height: 10px;
+    /* Чтобы всегда можно было бросить карточку в пустую колонку */
+}
+
+/* Стили самой карточки */
+.card {
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+    padding: 10px;
+    margin-bottom: 8px;
+    cursor: grab;
+    position: relative;
+    word-wrap: break-word;
+}
+
+/* Крестик для удаления (показываем только при наведении) */
+.card-delete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: #888;
+    display: none;
+}
+
+.card:hover .card-delete {
+    display: block;
+}
+
+.card-delete:hover {
+    color: #d32f2f;
+}
+
+/* Кнопки добавления */
+.add-card-btn {
+    background: transparent;
+    border: none;
+    color: #5e6c84;
+    cursor: pointer;
+    padding: 10px;
+    text-align: left;
+    border-radius: 3px;
+    width: 100%;
+}
+
+.add-card-btn:hover {
+    background-color: rgba(9, 30, 66, .08);
+    color: #172b4d;
+}
+
+.add-card-form.hidden {
+    display: none;
+}
+
+.card-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    border: none;
+    resize: none;
+    height: 60px;
+}
+
+.add-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-save {
+    background-color: #5aac44;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #6b778c;
+}
+
+/* --- СТИЛИ ДЛЯ DRAG AND DROP --- */
+
+/* Класс для карточки, которую мы тащим */
+.dragged {
+    position: absolute;
+    z-index: 1000;
+    pointer-events: none;
+    /* Чтобы мышь не спотыкалась об саму карточку */
+    transform: rotate(3deg);
+    /* Небольшой наклон при переносе */
+}
+
+/* Пустое место (тень), куда упадет карточка */
+.card-placeholder {
+    background-color: rgba(9, 30, 66, .08);
+    border-radius: 3px;
+    margin-bottom: 8px;
+}
