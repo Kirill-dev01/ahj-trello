@@ -48,7 +48,7 @@ export default class Board {
             list.innerHTML = ''; // Очищаем колонку
 
             this.state[id].forEach(text => {
-                list.appendChild(this.createCard(text));
+                list.append(this.createCard(text));
             });
         });
     }
@@ -67,8 +67,8 @@ export default class Board {
         del.className = 'card-delete';
         del.textContent = '✖';
 
-        card.appendChild(textSpan);
-        card.appendChild(del);
+        card.append(textSpan);
+        card.append(del);
         return card;
     }
 
@@ -98,7 +98,7 @@ export default class Board {
 
                 if (text) {
                     const list = form.closest('.column').querySelector('.cards-list');
-                    list.appendChild(this.createCard(text));
+                    list.append(this.createCard(text));
                     input.value = '';
                     form.classList.add('hidden');
                     form.previousElementSibling.classList.remove('hidden');
@@ -140,7 +140,7 @@ export default class Board {
 
             // Ставим заглушку на старое место карточки, а саму карточку выкидываем в body
             this.draggedEl.after(this.placeholder);
-            document.body.appendChild(this.draggedEl);
+            document.body.append(this.draggedEl);
 
             this.moveAt(e.pageX, e.pageY);
 
@@ -173,7 +173,7 @@ export default class Board {
                     }
                 } else {
                     // Если навели на пустую колонку - просто кидаем тень вниз
-                    list.appendChild(this.placeholder);
+                    list.append(this.placeholder);
                 }
             }
         };
